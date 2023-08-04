@@ -11,9 +11,12 @@ def main():
         image_path = input('Enter the path of the image to convert: ')
         new_ext = input('Enter the new type of the image will be, like this: .exe ')
         convert_image(image_path, new_ext)
-        
+
     elif choice.lower() == 'v':
         video_path = input('Enter the path of the video to convert: ')
         new_ext = input('Enter the new type of the video will be, like this: .exe ')
         convert_video(video_path, new_ext)
+
+    else:
+        print('Try again.')
 
