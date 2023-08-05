@@ -16,6 +16,8 @@ def get_video_aspect_ratio(video_path):
     return aspect_ratio
 
 def convert_video(file_name: str, new_ext: str):
+    fp_aspect_ratio = get_video_aspect_ratio(file_name)
+    str_aspect_ratio = str(fp_aspect_ratio).replace('.', ':')
     split_file_name = file_name.rsplit('.')
     try:
         clip = moviepy.VideoFileClip(file_name)
