@@ -3,6 +3,17 @@ from PIL import Image
 import cv2
 
 def get_video_aspect_ratio(video_path):
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        print("Error: Unable to open video file.")
+        return
+
+    frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    cap.release()
+
+    aspect_ratio = frame_width / frame_height
+    return aspect_ratio
 
 def convert_video(file_name: str, new_ext: str):
     split_file_name = file_name.rsplit('.')
