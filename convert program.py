@@ -5,6 +5,14 @@ def convert_video(file_name: str, new_ext: str):
     clip = moviepy.VideoFileClip(file_name)
     clip.write_videofile(split_file_name[0] + new_ext)
 
+    
+def convert_image(file_name: str, new_ext: str):
+    try:
+        img = Image.open(file_name)
+        img.save(file_name, "WEBP")
+    except Exception as e:
+        print('Error occurred during conversion: ' + e)
+
 def main():
     while True:
         choice = input('Do you want to convert images, or video? Enter in i and v respectively: ')
