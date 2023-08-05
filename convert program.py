@@ -1,4 +1,5 @@
 import moviepy.editor as moviepy
+from PIL import Image
 
 def convert_video(file_name: str, new_ext: str):
     split_file_name = file_name.rsplit('.')
