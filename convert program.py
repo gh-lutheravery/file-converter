@@ -1,5 +1,8 @@
 import moviepy.editor as moviepy
 from PIL import Image
+import cv2
+
+def get_video_aspect_ratio(video_path):
 
 def convert_video(file_name: str, new_ext: str):
     split_file_name = file_name.rsplit('.')
