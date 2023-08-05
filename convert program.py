@@ -13,7 +13,7 @@ def convert_video(file_name: str, new_ext: str):
 def convert_image(file_name: str, new_ext: str):
     try:
         img = Image.open(file_name)
-        img.save(file_name, "WEBP")
+        img.save(file_name, new_ext.lstrip('.'))
     except Exception as e:
         print('Error occurred during conversion: ' + e)
 
