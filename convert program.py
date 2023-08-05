@@ -14,6 +14,8 @@ def convert_image(file_name: str, new_ext: str):
     try:
         img = Image.open(file_name)
         img.save(file_name, new_ext.lstrip('.'))
+    except IOError as e:
+        print('Error occurred; the sent file might not exist: ' + e)
     except Exception as e:
         print('Error occurred during conversion: ' + e)
 
