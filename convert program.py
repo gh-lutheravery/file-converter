@@ -3,8 +3,11 @@ from PIL import Image
 
 def convert_video(file_name: str, new_ext: str):
     split_file_name = file_name.rsplit('.')
-    clip = moviepy.VideoFileClip(file_name)
-    clip.write_videofile(split_file_name[0] + new_ext)
+    try:
+        clip = moviepy.VideoFileClip(file_name)
+        clip.write_videofile(split_file_name[0] + new_ext)
+    except Exception as e:
+        print('Error occurred during conversion: ' + e)
 
     
 def convert_image(file_name: str, new_ext: str):
