@@ -3,10 +3,9 @@ from PIL import Image
 import cv2
 
 def convert_video(file_name: str, new_ext: str):
-    aspect_ratio = str.join('x', get_video_aspect_ratio(file_name))
     split_file_name = file_name.rsplit('.')
     try:
-        clip = moviepy.VideoFileClip(file_name, target_resolution=aspect_ratio)
+        clip = moviepy.VideoFileClip(file_name)
         clip.write_videofile(split_file_name[0] + new_ext)
     except Exception as e:
         print('Error occurred during conversion: ' + e)
