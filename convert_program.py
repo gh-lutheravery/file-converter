@@ -73,7 +73,7 @@ def main():
 
             new_ext = input('Enter the new type of the video will be, like this: .exe ')
             new_ext_stripped = new_ext.lstrip('.').upper()
-            if new_ext_stripped in supported_vids:
+            if not(new_ext_stripped in supported_vids):
                 print('Try again.')
                 continue
             
