@@ -24,8 +24,10 @@ def convert_image(file_name: str, new_ext: str):
         split_file_name = file_name.rsplit('.')
         img = Image.open(file_name)
 
+        print('Beginning conversion...')
         rgb_img = img.convert('RGB')
         rgb_img.save(split_file_name[0] + new_ext)
+        print('Conversion finished.')
     except FileNotFoundError as e:
         print('Error occurred; the sent file might not exist: ' + str(e))
     except Exception as e:
@@ -35,7 +37,7 @@ def convert_image(file_name: str, new_ext: str):
 def main():
     while True:
         print_title()
-        
+
         choice = input('Do you want to convert images, or video? Enter in i and v respectively: ')
         if choice.lower() == 'i':
             image_path = input('Enter the path of the image to convert: ')
