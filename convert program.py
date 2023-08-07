@@ -13,12 +13,14 @@ def convert_mkv_mp4(file_name: str, new_ext: str):
     
 def convert_image(file_name: str, new_ext: str):
     try:
+        split_file_name = file_name.rsplit('.')
         img = Image.open(file_name)
-        img.save(file_name, new_ext.lstrip('.'))
+        img.save(split_file_name[0] + new_ext)
     except IOError as e:
         print('Error occurred; the sent file might not exist: ' + e)
     except Exception as e:
         print('Error occurred during conversion: ' + e)
+
 
 def main():
     while True:
