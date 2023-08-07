@@ -63,7 +63,8 @@ def main():
         elif choice.lower() == 'v':
             video_path = input('Enter the path of the video to convert: ')
             if not(os.path.exists(video_path) and os.path.isfile(video_path)):
-                if not(video_path.rsplit('.')[1] in supported_vids):
+                vid_ext = video_path.rsplit('.')[1].upper()
+                if not(vid_ext in supported_vids):
                     print('That file is not supported, try again.')
                     continue
 
@@ -71,7 +72,8 @@ def main():
                 continue
 
             new_ext = input('Enter the new type of the video will be, like this: .exe ')
-            if new_ext != '.mkv' and new_ext != '.mp4':
+            new_ext_stripped = new_ext.lstrip('.').upper()
+            if new_ext_stripped in supported_vids:
                 print('Try again.')
                 continue
             
