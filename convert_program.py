@@ -37,11 +37,17 @@ def convert_image(file_name: str, new_ext: str):
 def main():
     while True:
         print_title()
+        supported_imgs = ['PNG', 'JPG', 'TIFF', 'WEBP', 'BMP']
+        supported_vids = ['MKV', 'MP4']
 
         choice = input('Do you want to convert images, or video? Enter in i and v respectively, or press q to quit: ')
         if choice.lower() == 'i':
             image_path = input('Enter the path of the image to convert: ')
             if not(os.path.exists(image_path) and os.path.isfile(image_path)):
+                if not(image_path.rsplit('.')[1] in supported_imgs):
+                    print('That file is not supported, try again.')
+                    continue
+                
                 print('That image path does not seem to exist, try again.')
                 continue
 
