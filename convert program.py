@@ -18,10 +18,10 @@ def convert_image(file_name: str, new_ext: str):
 
         rgb_img = img.convert('RGB')
         rgb_img.save(split_file_name[0] + new_ext)
-    except IOError as e:
-        print('Error occurred; the sent file might not exist: ' + e)
+    except FileNotFoundError as e:
+        print('Error occurred; the sent file might not exist: ' + str(e))
     except Exception as e:
-        print('Error occurred during conversion: ' + e)
+        print('Error occurred during conversion: ' + str(e))
 
 
 def main():
