@@ -61,6 +61,10 @@ def main():
         elif choice.lower() == 'v':
             video_path = input('Enter the path of the video to convert: ')
             if not(os.path.exists(video_path) and os.path.isfile(video_path)):
+                if not(video_path.rsplit('.')[1] in supported_vids):
+                    print('That file is not supported, try again.')
+                    continue
+
                 print('That video path does not seem to exist, try again.')
                 continue
 
