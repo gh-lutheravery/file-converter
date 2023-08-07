@@ -1,6 +1,7 @@
 import moviepy.editor as moviepy
 from PIL import Image
 import cv2
+import os
 
 def convert_mkv_mp4(file_name: str, new_ext: str):
     split_file_name = file_name.rsplit('.')
@@ -29,6 +30,10 @@ def main():
         choice = input('Do you want to convert images, or video? Enter in i and v respectively: ')
         if choice.lower() == 'i':
             image_path = input('Enter the path of the image to convert: ')
+            if not(os.path.exists(image_path) and os.path.isfile(image_path)):
+                print('That image path does not seem to exist, try again.')
+                continue
+            
             new_ext = input('Enter the new type of the image will be, like this: .exe ')
             if not(new_ext.startswith('.')):
                 print('Try again.')
