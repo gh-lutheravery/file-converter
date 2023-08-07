@@ -2,18 +2,6 @@ import moviepy.editor as moviepy
 from PIL import Image
 import cv2
 
-def get_video_aspect_ratio(video_path):
-    cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        print("Error: Unable to open video file.")
-        return
-
-    frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-    frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    cap.release()
-
-    return [str(frame_width), str(frame_height)]
-
 def convert_video(file_name: str, new_ext: str):
     aspect_ratio = str.join('x', get_video_aspect_ratio(file_name))
     split_file_name = file_name.rsplit('.')
