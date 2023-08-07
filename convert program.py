@@ -33,7 +33,7 @@ def main():
             if not(os.path.exists(image_path) and os.path.isfile(image_path)):
                 print('That image path does not seem to exist, try again.')
                 continue
-            
+
             new_ext = input('Enter the new type of the image will be, like this: .exe ')
             if not(new_ext.startswith('.')):
                 print('Try again.')
@@ -43,8 +43,12 @@ def main():
 
         elif choice.lower() == 'v':
             video_path = input('Enter the path of the video to convert: ')
+            if not(os.path.exists(video_path) and os.path.isfile(video_path)):
+                print('That video path does not seem to exist, try again.')
+                continue
+
             new_ext = input('Enter the new type of the video will be, like this: .exe ')
-            if not(new_ext.startswith('.')):
+            if new_ext != '.mkv' and new_ext != '.mp4':
                 print('Try again.')
                 continue
             
