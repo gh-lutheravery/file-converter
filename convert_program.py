@@ -44,7 +44,8 @@ def main():
         if choice.lower() == 'i':
             image_path = input('Enter the path of the image to convert: ')
             if not(os.path.exists(image_path) and os.path.isfile(image_path)):
-                if not(image_path.rsplit('.')[1] in supported_imgs):
+                img_ext = image_path.rsplit('.')[1].upper()
+                if not(img_ext in supported_imgs):
                     print('That file is not supported, try again.')
                     continue
                 
@@ -52,7 +53,8 @@ def main():
                 continue
 
             new_ext = input('Enter the new type of the image will be, like this: .exe ')
-            if not(new_ext.startswith('.')):
+            new_ext_stripped = new_ext.lstrip('.').upper()
+            if not(new_ext_stripped in supported_imgs):
                 print('Try again.')
                 continue
 
