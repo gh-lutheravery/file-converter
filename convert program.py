@@ -15,7 +15,9 @@ def convert_image(file_name: str, new_ext: str):
     try:
         split_file_name = file_name.rsplit('.')
         img = Image.open(file_name)
-        img.save(split_file_name[0] + new_ext)
+
+        rgb_img = img.convert('RGB')
+        rgb_img.save(split_file_name[0] + new_ext)
     except IOError as e:
         print('Error occurred; the sent file might not exist: ' + e)
     except Exception as e:
