@@ -38,7 +38,7 @@ def main():
     while True:
         print_title()
 
-        choice = input('Do you want to convert images, or video? Enter in i and v respectively: ')
+        choice = input('Do you want to convert images, or video? Enter in i and v respectively, or press q to quit: ')
         if choice.lower() == 'i':
             image_path = input('Enter the path of the image to convert: ')
             if not(os.path.exists(image_path) and os.path.isfile(image_path)):
@@ -64,6 +64,9 @@ def main():
                 continue
             
             convert_mkv_mp4(video_path, new_ext)
+
+        elif choice.lower() == 'q':
+            break
 
         else:
             print('Try again.')
