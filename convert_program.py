@@ -14,7 +14,7 @@ def convert_mkv_mp4(file_name: str, new_ext: str):
     split_file_name = file_name.rsplit('.')
     try:
         clip = moviepy.VideoFileClip(file_name)
-        clip.write_videofile(split_file_name[0] + new_ext)
+        clip.write_videofile(split_file_name[0] + new_ext, codec="libx264")
     except Exception as e:
         print('Error occurred during conversion: ' + str(e))
 
