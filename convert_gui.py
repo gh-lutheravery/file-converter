@@ -63,6 +63,18 @@ class ConverterApp(QMainWindow):
         self.ind_central_widget.setStyleSheet('background-color: #d8d8d8;')
         self.setCentralWidget(self.ind_central_widget)
 
+    def convertVideo(self):
+        fd = QFileDialog()
+        options = fd.options()
+
+        video_path, _ = QFileDialog.getOpenFileName(self, 'Open Video', '', 'Video Files (*.mkv *.mp4)', options=options)
+
+        if video_path:
+            new_path, _ = QFileDialog.getSaveFileName(self, 'Save Video As', '', 'Video Files (*.mkv *.mp4)')
+
+            if new_path:
+                self.performVideoConversion(video_path, new_path)
+
     def convertImage(self):
         fd = QFileDialog()
         options = fd.options()
