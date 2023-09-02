@@ -14,13 +14,19 @@ import os
 class ConverterApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        
+
         self.supported_vids = ['MKV', 'MP4']
         
         exts = Image.registered_extensions()
         supported_extensions = {ex for ex, f in exts.items() if f in Image.SAVE}
         
         self.supported_imgs = supported_extensions
+        
+        # make the supported image formats for the file dialog
+        modified_strings = ["*" + s for s in self.supported_imgs]
+        result_string = " ".join(modified_strings)
+        
+        self.supported_imgs_file_dialog = result_string
         self.initUI()
 
     def initUI(self):
