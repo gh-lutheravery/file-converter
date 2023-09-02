@@ -63,6 +63,18 @@ class ConverterApp(QMainWindow):
         self.ind_central_widget.setStyleSheet('background-color: #d8d8d8;')
         self.setCentralWidget(self.ind_central_widget)
 
+    def convertImage(self):
+        fd = QFileDialog()
+        options = fd.options()
+        
+        image_path, _ = QFileDialog.getOpenFileName(self, 'Open Image', '', 'Image Files (' + self.supported_imgs_file_dialog + ')', options=options)
+
+        if image_path:
+            new_ext, _ = QFileDialog.getSaveFileName(self, 'Save Image As', '', 'Image Files (' + self.supported_imgs_file_dialog + ')')
+
+            if new_ext:
+                self.performImageConversion(image_path, new_ext)
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
