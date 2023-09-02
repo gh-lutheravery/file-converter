@@ -21,7 +21,7 @@ class ConverterApp(QMainWindow):
         supported_extensions = {ex for ex, f in exts.items() if f in Image.SAVE}
         
         self.supported_imgs = supported_extensions
-        
+
         # make the supported image formats for the file dialog
         modified_strings = ["*" + s for s in self.supported_imgs]
         result_string = " ".join(modified_strings)
@@ -103,5 +103,6 @@ class ConverterApp(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
-
+    converter = ConverterApp()
+    converter.show()
     sys.exit(app.exec())
