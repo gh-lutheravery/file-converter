@@ -9,3 +9,10 @@ from PyQt6.QtGui import QColor
 import moviepy.editor as moviepy
 from PIL import Image
 import os
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    app.setStyle('Fusion')
+
+    sys.exit(app.exec())
