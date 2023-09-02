@@ -11,6 +11,11 @@ from PIL import Image
 import os
 
 
+class ConverterApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
