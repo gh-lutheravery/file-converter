@@ -14,6 +14,13 @@ import os
 class ConverterApp(QMainWindow):
     def __init__(self):
         super().__init__()
+        
+        self.supported_vids = ['MKV', 'MP4']
+        
+        exts = Image.registered_extensions()
+        supported_extensions = {ex for ex, f in exts.items() if f in Image.SAVE}
+        
+        self.supported_imgs = supported_extensions
         self.initUI()
 
     def initUI(self):
