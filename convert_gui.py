@@ -153,7 +153,14 @@ class ConverterApp(QMainWindow):
                     new_file_name = file_name.split('.')[0] + '.' + 'mp4'
                 new_file_name = file_name.split('.')[0] + '.' + 'mkv'
             
-            
+            if vid_flag == False:
+                self.performImageConversion(file_path, new_file_path, fin_msg_flag=False)
+                
+            elif vid_flag == True:
+                if mp4_flag:
+                    self.performVideoConversion(file_path, 'mp4', fin_msg_flag=False)
+                else:
+                    self.performVideoConversion(file_path, 'mkv', fin_msg_flag=False)
 
         QMessageBox.about(self, 'Batch Conversion Finished', 'Batch conversion is complete.')
 
