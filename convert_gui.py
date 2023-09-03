@@ -34,8 +34,13 @@ class ConverterApp(QMainWindow):
         self.setWindowTitle('File Converter')
 
         self.layout = QVBoxLayout()
+        rb_layout = QVBoxLayout()
 
+        self.convert_ind_file = QRadioButton('Convert Individual Files', self)
+        self.convert_batch_file = QRadioButton('Convert File Batches', self)
+        
         self.convert_ind_file.setChecked(True)
+        self.convert_batch_file.clicked.connect(self.initBatchUI)
         self.convert_ind_file.clicked.connect(self.hideBatchOptions)
         
         self.title_label = QLabel('Python Image and Video Converter', self)
