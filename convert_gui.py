@@ -85,6 +85,30 @@ class ConverterApp(QMainWindow):
         self.ind_central_widget.setStyleSheet('background-color: #d8d8d8;')
         self.setCentralWidget(self.ind_central_widget)
 
+    # make interface for batch conversions
+    def initBatchUI(self):
+        self.batch_layout = QVBoxLayout()
+
+        self.open_button = QPushButton('Open Files', self)
+        self.open_button.clicked.connect(self.openBatch)
+        self.batch_layout.addWidget(self.open_button)
+        
+        self.output_path_button = QPushButton('Output Path', self)
+        self.output_path_button.clicked.connect(self.openBatchOutput)
+        self.batch_layout.addWidget(self.output_path_button)
+
+        self.new_extension_label = QLabel('New File Extension, ex. png', self)
+        self.batch_layout.addWidget(self.new_extension_label)
+        self.output_path_note = QLabel('Note that any videos will be converted to either mkv or mp4.', self)
+        self.batch_layout.addWidget(self.output_path_note)
+        
+        self.new_extension_input = QLineEdit(self)
+        self.batch_layout.addWidget(self.new_extension_input)
+
+        self.convert_button = QPushButton('Convert', self)
+        self.batch_layout.addWidget(self.convert_button)
+
+
     def convertVideo(self):
         fd = QFileDialog()
         options = fd.options()
