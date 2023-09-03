@@ -42,13 +42,16 @@ class ConverterApp(QMainWindow):
         self.convert_ind_file.setChecked(True)
         self.convert_batch_file.clicked.connect(self.initBatchUI)
         self.convert_ind_file.clicked.connect(self.hideBatchOptions)
+
+        rb_layout.addWidget(self.convert_ind_file)
+        rb_layout.addWidget(self.convert_batch_file)
         
         self.title_label = QLabel('Python Image and Video Converter', self)
         
         effect = QGraphicsDropShadowEffect()
         effect.setBlurRadius(1)
-        effect.setXOffset(5);
-        effect.setYOffset(5);
+        effect.setXOffset(5)
+        effect.setYOffset(5)
         color = QColor()  
         effect.setColor(QColor.black(color))
         
@@ -62,7 +65,6 @@ class ConverterApp(QMainWindow):
         self.format_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.layout.addWidget(self.format_label)
         
-
         self.image_button = QPushButton('Convert Image', self)
         self.image_button.setStyleSheet('QPushButton{ border: 1px solid gray; padding: 8px; border-radius: 4px; background-color: white; } QPushButton:hover { background-color: lightblue; }')
         self.image_button.clicked.connect(self.convertImage)
@@ -74,6 +76,8 @@ class ConverterApp(QMainWindow):
         self.video_button.clicked.connect(self.convertVideo)
         
         self.layout.addWidget(self.video_button)
+
+        self.layout.addLayout(rb_layout)
 
         self.ind_central_widget = QWidget()
         self.ind_central_widget.setLayout(self.layout)
