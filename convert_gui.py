@@ -106,7 +106,9 @@ class ConverterApp(QMainWindow):
         self.batch_layout.addWidget(self.new_extension_input)
 
         self.convert_button = QPushButton('Convert', self)
+        self.convert_button.clicked.connect(self.convertBatch)
         self.batch_layout.addWidget(self.convert_button)
+        self.layout.addLayout(self.batch_layout)
 
 
     # save file batch that user wants to convert
