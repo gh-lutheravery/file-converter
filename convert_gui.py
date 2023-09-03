@@ -29,6 +29,7 @@ class ConverterApp(QMainWindow):
         self.supported_imgs_file_dialog = result_string
         self.initUI()
 
+    # create main interface of the app
     def initUI(self):
         self.setGeometry(100, 100, 625, 400)
         self.setWindowTitle('File Converter')
@@ -150,7 +151,7 @@ class ConverterApp(QMainWindow):
             
         return True
 
-
+    # loop through files in batch to convert
     def convertBatch(self):
         output_path = self.output_folder
         new_extension = self.new_extension_input.text()
@@ -199,6 +200,7 @@ class ConverterApp(QMainWindow):
             if new_path:
                 self.performVideoConversion(video_path, new_path)
 
+
     def convertImage(self):
         fd = QFileDialog()
         options = fd.options()
@@ -237,6 +239,7 @@ class ConverterApp(QMainWindow):
             QMessageBox.warning(self, 'Error', 'Error occurred; the sent file might not exist: ' + str(e))
         except Exception as e:
             QMessageBox.warning(self, 'Error', 'Error occurred during conversion: ' + str(e))
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
