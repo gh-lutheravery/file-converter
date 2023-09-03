@@ -143,6 +143,15 @@ class ConverterApp(QMainWindow):
             new_file_name = file_name.split('.')[0] + '.' + new_extension
             new_file_path = os.path.join(output_path, new_file_name)
             
+            mp4_flag = False
+            vid_flag = False
+            
+            if old_file_ext.upper() in self.supported_vids:
+                vid_flag = True
+                if old_file_ext.upper() == 'MP4':
+                    mp4_flag = True
+                    new_file_name = file_name.split('.')[0] + '.' + 'mp4'
+                new_file_name = file_name.split('.')[0] + '.' + 'mkv'
             
             
 
