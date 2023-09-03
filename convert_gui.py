@@ -214,11 +214,17 @@ class ConverterApp(QMainWindow):
 
     def performVideoConversion(self, video_path, new_path, fin_msg_flag = True):
         try:
-            clip = moviepy.VideoFileClip(video_path)
-            clip.write_videofile(new_path, codec="libx264")
+            with open("output.txt", "w") as output:
+                sys.stdout = output
+                sys.stderr = output
+
+                clip = moviepy.VideoFileClip(video_path)
+                clip.write_videofile(new_path, codec="libx264")
             
             if fin_msg_flag:
                 QMessageBox.about(self, 'Conversion Finished', 'Video conversion is complete.')
+            
+            os.remove("output.txt")
             
         except Exception as e:
             QMessageBox.warning(self, 'Error', 'Error occurred during conversion: ' + str(e))
