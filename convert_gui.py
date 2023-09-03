@@ -129,6 +129,17 @@ class ConverterApp(QMainWindow):
         self.output_folder = output_folder
 
 
+    def validate_ext(self, new_extension_input): 
+        valid_ext = '.' + new_extension_input.lower()
+        if valid_ext not in self.supported_imgs and self.supported_vids:
+            err_msg = "The extension you entered isn't supported; try again."
+            QMessageBox.warning(self, 'Error', err_msg)
+            
+            return False
+            
+        return True
+
+
     def convertBatch(self):
         output_path = self.output_folder
         new_extension = self.new_extension_input.text()
