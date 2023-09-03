@@ -68,13 +68,13 @@ class ConverterApp(QMainWindow):
         
         self.image_button = QPushButton('Convert Image', self)
         self.image_button.setStyleSheet('QPushButton{ border: 1px solid gray; padding: 8px; border-radius: 4px; background-color: white; } QPushButton:hover { background-color: lightblue; }')
-        self.image_button.clicked.connect(self.convertImage)
+        self.image_button.clicked.connect(self.getImagePaths)
 
         self.layout.addWidget(self.image_button)
 
         self.video_button = QPushButton('Convert Video', self)
         self.video_button.setStyleSheet('QPushButton{ border: 1px solid gray; padding: 8px; border-radius: 4px; background-color: white; } QPushButton:hover { background-color: lightblue; }' )
-        self.video_button.clicked.connect(self.convertVideo)
+        self.video_button.clicked.connect(self.getVideoPaths)
         
         self.layout.addWidget(self.video_button)
 
@@ -188,7 +188,7 @@ class ConverterApp(QMainWindow):
         QMessageBox.about(self, 'Batch Conversion Finished', 'Batch conversion is complete.')
 
 
-    def convertVideo(self):
+    def getVideoPaths(self):
         fd = QFileDialog()
         options = fd.options()
 
@@ -201,7 +201,7 @@ class ConverterApp(QMainWindow):
                 self.performVideoConversion(video_path, new_path)
 
 
-    def convertImage(self):
+    def getImagePaths(self):
         fd = QFileDialog()
         options = fd.options()
         
