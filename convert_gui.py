@@ -100,6 +100,33 @@ class ConverterApp(QMainWindow):
             if new_ext:
                 self.performImageConversion(image_path, new_ext)
 
+    def performVideoConversion(self, video_path, new_path, fin_msg_flag = True):
+        try:
+            clip = moviepy.VideoFileClip(video_path)
+            clip.write_videofile(new_path, codec="libx264")
+            
+            if fin_msg_flag:
+                QMessageBox.about(self, 'Conversion Finished', 'Video conversion is complete.')
+            
+        except Exception as e:
+            QMessageBox.warning(self, 'Error', 'Error occurred during conversion: ' + str(e))
+
+
+    def performImageConversion(self, image_path, new_path, fin_msg_flag = True):
+        try:
+            img = Image.open(image_path)
+
+            rgb_img = img.convert('RGB')
+            rgb_img.save(new_path)
+            
+            if fin_msg_flag:
+                QMessageBox.about(self, 'Conversion Finished', 'Image conversion is complete.')
+                
+        except FileNotFoundError as e:
+            QMessageBox.warning(self, 'Error', 'Error occurred; the sent file might not exist: ' + str(e))
+        except Exception as e:
+            QMessageBox.warning(self, 'Error', 'Error occurred during conversion: ' + str(e))
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
