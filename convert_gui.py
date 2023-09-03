@@ -117,7 +117,16 @@ class ConverterApp(QMainWindow):
         files, _ = QFileDialog.getOpenFileNames(self, 'Open Files', '', 'Image Files (' + self.supported_imgs_file_dialog + ')', options=options)
         self.selected_files = files
 
+    
+    # save directory that user wants to save converted batch to
+    def openBatchOutput(self):
+        fd = QFileDialog()
+        options = fd.options()
         
+        output_folder = QFileDialog.getExistingDirectory(self, 'Open Files', '', options=options)
+        self.output_folder = output_folder
+
+
     def convertVideo(self):
         fd = QFileDialog()
         options = fd.options()
