@@ -129,6 +129,26 @@ class ConverterApp(QMainWindow):
         self.output_folder = output_folder
 
 
+    def convertBatch(self):
+        output_path = self.output_folder
+        new_extension = self.new_extension_input.text()
+        
+        valid_ext_flag = self.validate_ext(self.new_extension_input.text())
+        if valid_ext_flag == False:
+            return
+
+        for file_path in self.selected_files:
+            file_name = file_path.split('/')[-1]  # Get the file name from the path
+            old_file_ext = file_name.split('.')[1]
+            new_file_name = file_name.split('.')[0] + '.' + new_extension
+            new_file_path = os.path.join(output_path, new_file_name)
+            
+            
+            
+
+        QMessageBox.about(self, 'Batch Conversion Finished', 'Batch conversion is complete.')
+
+
     def convertVideo(self):
         fd = QFileDialog()
         options = fd.options()
