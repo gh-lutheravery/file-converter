@@ -109,6 +109,15 @@ class ConverterApp(QMainWindow):
         self.batch_layout.addWidget(self.convert_button)
 
 
+    # save file batch that user wants to convert
+    def openBatch(self):
+        fd = QFileDialog()
+        options = fd.options()
+        
+        files, _ = QFileDialog.getOpenFileNames(self, 'Open Files', '', 'Image Files (' + self.supported_imgs_file_dialog + ')', options=options)
+        self.selected_files = files
+
+        
     def convertVideo(self):
         fd = QFileDialog()
         options = fd.options()
