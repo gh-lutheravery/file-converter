@@ -128,6 +128,17 @@ class ConverterApp(QMainWindow):
         output_folder = QFileDialog.getExistingDirectory(self, 'Open Files', '', options=options)
         self.output_folder = output_folder
 
+    
+    # hide batch ui when switching to individual conversion
+    def hideBatchOptions(self):
+        # Remove batch options layout
+        if self.batch_layout.count() > 0:
+            num = 0
+            while self.batch_layout.itemAt(num):
+                self.batch_layout.itemAt(num).widget().deleteLater()
+                self.layout.removeItem(self.batch_layout)
+                num += 1
+
 
     def validate_ext(self, new_extension_input): 
         valid_ext = '.' + new_extension_input.lower()
